@@ -8,7 +8,7 @@ from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay, classifica
 from sklearn.model_selection import train_test_split
 
 # Load the trained model
-model = joblib.load("sleep_disorder_svm_model_fixed_v132.pkl")
+model = joblib.load("sleep_disorder_svm_model_v132.pkl")
 
 st.set_page_config(page_title="Sleep Disorder Predictor", layout="centered")
 st.title("🛌 Sleep Disorder Prediction App")
