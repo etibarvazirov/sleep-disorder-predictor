@@ -45,20 +45,24 @@ if st.button("Predict"):
 
     y_pred = model.predict(X_test)
 
-    # Confusion Matrix
+    y_test = y_test.astype(str)
+    y_pred = pd.Series(y_pred).astype(str)
+
+    # --- Confusion Matrix ---
     st.subheader("📉 Confusion Matrix")
-    cm = confusion_matrix(y_test, y_pred, labels=model.classes_)
+    cm = confusion_matrix(y_test, y_pred)
     fig_cm, ax_cm = plt.subplots()
-    disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=model.classes_)
+    disp = ConfusionMatrixDisplay(confusion_matrix=cm)
     disp.plot(ax=ax_cm)
     st.pyplot(fig_cm)
 
-    # Classification Report Bar Chart
+    # --- Classification Bar Chart ---
     st.subheader("📊 Classification Metrics")
-    report_dict = classification_report(y_test, y_pred, output_dict=True)
+    report = classification_report(y_test, y_pred, output_dict=True)
+
     classes = list(model.classes_)
     metrics = ['precision', 'recall', 'f1-score']
-    metric_values = {metric: [report_dict[c][metric] for c in classes] for metric in metrics}
+    metric_values = {metric: [report[c][metric] for c in classes] for metric in metrics}
 
     x = np.arange(len(classes))
     width = 0.25
