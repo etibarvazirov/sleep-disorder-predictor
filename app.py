@@ -7,7 +7,7 @@ import numpy as np
 from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay, classification_report
 
 # Load model
-model = joblib.load("sleep_disorder_svm_model_v130.pkl")
+model = joblib.load("sleep_disorder_svm_model.pkl")
 
 # Page setup
 st.set_page_config(page_title="Sleep Disorder Prediction", layout="centered")
