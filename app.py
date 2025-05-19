@@ -41,6 +41,7 @@ if st.button("Predict"):
 if st.checkbox("📊 Show model evaluation metrics (static)"):
     # Load dataset
     df = pd.read_csv("Sleep_health_and_lifestyle_dataset.csv")
+    df = df.fillna("None")
     X = df[['Gender', 'Age', 'Occupation', 'BMI Category', 'Daily Steps']]
     y = df['Sleep Disorder']
 
